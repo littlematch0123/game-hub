@@ -1,16 +1,26 @@
-import { Alert, ListItem, UnorderedList } from "@chakra-ui/react";
+import { Alert, SimpleGrid } from "@chakra-ui/react";
 import useGames from "../hooks/useGames";
+import GameCard from "./GameCard";
 
 function GameGrid() {
   const { error, games } = useGames();
   return (
     <>
       {error && <Alert status="error">{error}</Alert>}
-      <UnorderedList>
+      <SimpleGrid
+        columns={{
+          sm: 1,
+          md: 2,
+          lg: 3,
+          xl: 5,
+        }}
+        p={2.5}
+        spacing={10}
+      >
         {games.map((game) => (
-          <ListItem key={game.id}>{game.name}</ListItem>
+          <GameCard game={game} key={game.id} />
         ))}
-      </UnorderedList>
+      </SimpleGrid>
     </>
   );
 }
