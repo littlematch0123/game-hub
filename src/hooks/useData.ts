@@ -6,17 +6,19 @@ interface FetchResponse<T> {
   count: number;
   results: T[];
 }
-const useData = <T>(endpoint: string) => {
+const useData = <T>(endpoint: string, dep?: number) => {
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
-
   useEffect(() => {
     const controller = new AbortController();
     setLoading(true);
     apiClient
       .get<FetchResponse<T>>(endpoint, {
         signal: controller.signal,
+        params: {
+          genres: dep,
+        },
       })
       .then((res) => {
         setLoading(false);
@@ -28,7 +30,7 @@ const useData = <T>(endpoint: string) => {
         setError((err as Error).message);
       });
     return () => controller.abort();
-  }, [endpoint]);
+  }, [endpoint, dep]);
   return { data, error, isLoading };
 };
 
