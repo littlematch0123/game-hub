@@ -13,14 +13,14 @@ import useGenres from "../hooks/useGenres";
 const GenreList = () => {
   const { error, data } = useGenres();
   return (
-    <Box p="10px">
+    <Box p="10px 20px">
       <Heading size="lg" marginBottom="10px">
         Genres
       </Heading>
       {error && <Alert status="error">{error}</Alert>}
       <List>
         {data.map((genre) => (
-          <ListItem key={genre.id} p="6px">
+          <ListItem key={genre.id} paddingY="4px">
             <HStack>
               <Image
                 w="40px"

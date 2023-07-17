@@ -15,9 +15,8 @@ function GameGrid() {
           sm: 1,
           md: 2,
           lg: 3,
-          xl: 4,
         }}
-        p={2.5}
+        p="10px"
         spacing={10}
       >
         {isLoading &&
