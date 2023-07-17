@@ -11,13 +11,14 @@ function GameGrid() {
     <>
       {error && <Alert status="error">{error}</Alert>}
       <SimpleGrid
+        as="ul"
         columns={{
           sm: 1,
           md: 2,
           lg: 3,
         }}
         p="10px"
-        spacing={10}
+        spacing={4}
       >
         {isLoading &&
           skeletons.map((_s, i) => (
