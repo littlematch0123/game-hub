@@ -11,10 +11,10 @@ const GameCard = ({ game }: Props) => {
   const { name, background_image: img, parent_platforms, metacritic } = game;
 
   return (
-    <Card borderRadius={10} overflow="hidden">
+    <Card>
       <Image src={getCroppedImageUrl(img)} />
       <CardBody>
-        <Heading size="lg">{name}</Heading>
+        <Heading size="md">{name}</Heading>
         <HStack justifyContent="space-between">
           <PlatFormIconList
             platforms={parent_platforms.map(({ platform }) => platform)}
