@@ -5,7 +5,6 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
-  Skeleton,
   Spinner,
 } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
@@ -31,14 +30,12 @@ const PlatformSelector = ({ selectedPlatform, onSelectedPlatform }: Props) => {
             </MenuItem>
           )}
           {data.map((platform) => (
-            <Skeleton isLoaded={!isLoading}>
-              <MenuItem
-                onClick={() => onSelectedPlatform(platform)}
-                key={platform.id}
-              >
-                {platform.name}
-              </MenuItem>
-            </Skeleton>
+            <MenuItem
+              onClick={() => onSelectedPlatform(platform)}
+              key={platform.id}
+            >
+              {platform.name}
+            </MenuItem>
           ))}
         </MenuList>
       </Menu>

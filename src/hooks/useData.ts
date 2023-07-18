@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
+import { GameQuery } from "../App";
 
 interface FetchResponse<T> {
   count: number;
   results: T[];
 }
-const useData = <T>(endpoint: string, genre?: number, platform?: number) => {
+const useData = <T>(endpoint: string, gameQuery?: GameQuery) => {
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
@@ -17,8 +18,8 @@ const useData = <T>(endpoint: string, genre?: number, platform?: number) => {
       .get<FetchResponse<T>>(endpoint, {
         signal: controller.signal,
         params: {
-          genres: genre,
-          platforms: platform,
+          genres: gameQuery?.genre?.id,
+          platforms: gameQuery?.platform?.id,
         },
       })
       .then((res) => {
@@ -31,7 +32,7 @@ const useData = <T>(endpoint: string, genre?: number, platform?: number) => {
         setError((err as Error).message);
       });
     return () => controller.abort();
-  }, [endpoint, genre, platform]);
+  }, [endpoint, gameQuery]);
   return { data, error, isLoading };
 };
 
