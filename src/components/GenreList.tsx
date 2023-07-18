@@ -28,13 +28,19 @@ const GenreList = ({ onSelectedGenre, selectedGenre }: Props) => {
         {error && <Alert status="error">{error}</Alert>}
         {isLoading &&
           skeletons.map((_s, i) => (
-            <HStack as="dd" key={i} paddingY="4px">
+            <HStack as="dd" key={i} padding="6px 0 6px 8px">
               <SkeletonCircle />
               <Skeleton w="80px" height="14px" />
             </HStack>
           ))}
         {data.map((genre) => (
-          <HStack as="dd" key={genre.id} paddingY="6px">
+          <HStack
+            as="dd"
+            key={genre.id}
+            padding="6px 0 6px 8px"
+            bg={selectedGenre?.id === genre.id ? "teal.300" : "transparent"}
+            borderRadius="20px"
+          >
             <Image
               boxSize="36px"
               borderRadius="10px"
