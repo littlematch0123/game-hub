@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import getCroppedImageUrl from "../services/image-url";
 import useGenres, { Genre } from "../hooks/useGenres";
+import genres from "../data/genres";
 
 interface Props {
   selectedGenre: Genre | null;
@@ -17,7 +18,7 @@ interface Props {
 }
 const GenreList = ({ onSelectedGenre, selectedGenre }: Props) => {
   const { error, data, isLoading } = useGenres();
-  const skeletons = new Array(19).fill(0);
+  const skeletons = new Array(genres.length).fill(0);
   return (
     <>
       <Box as="dl">
@@ -45,7 +46,8 @@ const GenreList = ({ onSelectedGenre, selectedGenre }: Props) => {
               textAlign="left"
               onClick={() => onSelectedGenre(genre)}
               variant="link"
-              color={selectedGenre?.id === genre.id ? "white.500" : "gray.400"}
+              color="white.300"
+              fontWeight={selectedGenre?.id === genre.id ? "bold" : "normal"}
             >
               {genre.name}
             </Button>
