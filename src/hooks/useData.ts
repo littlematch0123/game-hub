@@ -6,7 +6,7 @@ interface FetchResponse<T> {
   count: number;
   results: T[];
 }
-const useData = <T>(endpoint: string, dep?: number) => {
+const useData = <T>(endpoint: string, genre?: number, platform?: number) => {
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
@@ -17,7 +17,8 @@ const useData = <T>(endpoint: string, dep?: number) => {
       .get<FetchResponse<T>>(endpoint, {
         signal: controller.signal,
         params: {
-          genres: dep,
+          genres: genre,
+          platforms: platform,
         },
       })
       .then((res) => {
@@ -30,7 +31,7 @@ const useData = <T>(endpoint: string, dep?: number) => {
         setError((err as Error).message);
       });
     return () => controller.abort();
-  }, [endpoint, dep]);
+  }, [endpoint, genre, platform]);
   return { data, error, isLoading };
 };
 
