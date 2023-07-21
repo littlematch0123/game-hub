@@ -17,7 +17,7 @@ const PlatformSelector = ({ selectedPlatform, onSelectedPlatform }: Props) => {
   const { data, error, isLoading } = usePlatforms();
   return (
     <>
-      {error && <Alert status="error">{error}</Alert>}
+      {error && <Alert status="error">{error.message}</Alert>}
 
       <Menu>
         <MenuButton as={Button} rightIcon={<BsChevronDown />}>
