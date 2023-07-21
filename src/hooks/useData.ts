@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import apiClient from "../services/api-client";
+import { axiosInstance } from "../services/api-client";
 import { CanceledError } from "axios";
 import { GameQuery } from "../App";
 
@@ -14,7 +14,7 @@ const useData = <T>(endpoint: string, gameQuery?: GameQuery) => {
   useEffect(() => {
     const controller = new AbortController();
     setLoading(true);
-    apiClient
+    axiosInstance
       .get<FetchResponse<T>>(endpoint, {
         signal: controller.signal,
         params: {

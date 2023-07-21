@@ -25,7 +25,7 @@ const GenreList = ({ onSelectedGenre, selectedGenre }: Props) => {
         <Heading as="dt" size="lg" marginY="10px">
           Genres
         </Heading>
-        {error && <Alert status="error">{error}</Alert>}
+        {error && <Alert status="error">{error.message}</Alert>}
         {isLoading &&
           skeletons.map((_s, i) => (
             <HStack as="dd" key={i} padding="6px 0 6px 8px">
@@ -33,7 +33,7 @@ const GenreList = ({ onSelectedGenre, selectedGenre }: Props) => {
               <Skeleton w="80px" height="14px" />
             </HStack>
           ))}
-        {data.map((genre) => (
+        {data?.map((genre) => (
           <HStack
             as="dd"
             key={genre.id}
