@@ -13,16 +13,18 @@ export interface Game {
   genres: Genre[];
   rating_top: number;
 }
-
+const apiClient = new APIClient<Game>("/games");
 const useGames = (gameQuery: GameQuery) =>
   useQuery<Game[], Error>({
     queryKey: ["games", gameQuery],
     queryFn: () =>
-      new APIClient<Game>("/games").getAll({
-        genres: gameQuery?.genre?.id,
-        parent_platforms: gameQuery?.platform?.id,
-        ordering: gameQuery?.sortOrder,
-        search: gameQuery?.searchText,
+      apiClient.getAll({
+        params: {
+          genres: gameQuery?.genre?.id,
+          parent_platforms: gameQuery?.platform?.id,
+          ordering: gameQuery?.sortOrder,
+          search: gameQuery?.searchText,
+        },
       }),
   });
 export default useGames;

@@ -6,11 +6,11 @@ export interface Platform {
   name: string;
   slug: string;
 }
-
+const apiClient = new APIClient<Platform>("/platforms/lists/parents");
 const usePlatforms = () =>
   useQuery<Platform[], Error>({
     queryKey: ["platforms"],
-    queryFn: () => new APIClient<Platform>("/platforms/lists/parents").getAll(),
+    queryFn: apiClient.getAll,
     staleTime: 24 * 60 * 60 * 1000,
     initialData: platforms,
   });
