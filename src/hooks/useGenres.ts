@@ -10,7 +10,7 @@ export interface Genre {
 const useGenres = () =>
   useQuery<Genre[], Error>({
     queryKey: ["genres"],
-    queryFn: new APIClient<Genre>("/genres").getAll,
+    queryFn: () => new APIClient<Genre>("/genres").getAll(),
     staleTime: 24 * 60 * 60 * 1000,
     initialData: genres,
   });

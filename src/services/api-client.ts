@@ -4,7 +4,12 @@ interface FetchResponse<T> {
   count: number;
   results: T[];
 }
-
+interface Props {
+  genres?: number;
+  parent_platforms?: number;
+  ordering: string;
+  search: string;
+}
 export const axiosInstance: AxiosInstance = axios.create({
   baseURL: "https://api.rawg.io/api",
   params: {
@@ -18,9 +23,9 @@ class APIClient<T> {
     this.endpoint = endpoint;
   }
 
-  getAll = () =>
+  getAll = (params?: Props) =>
     axiosInstance
-      .get<FetchResponse<T>>(this.endpoint)
+      .get<FetchResponse<T>>(this.endpoint, { params })
       .then((res) => res.data.results);
 }
 export default APIClient;
