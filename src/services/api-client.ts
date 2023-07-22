@@ -1,8 +1,9 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 
-interface FetchResponse<T> {
+export interface FetchResponse<T> {
   count: number;
   results: T[];
+  next: string | null;
 }
 export const axiosInstance: AxiosInstance = axios.create({
   baseURL: "https://api.rawg.io/api",
@@ -21,5 +22,10 @@ class APIClient<T> {
     axiosInstance
       .get<FetchResponse<T>>(this.endpoint, config)
       .then((res) => res.data.results);
+
+  getAllData = (config?: AxiosRequestConfig) =>
+    axiosInstance
+      .get<FetchResponse<T>>(this.endpoint, config)
+      .then((res) => res.data);
 }
 export default APIClient;
