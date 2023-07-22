@@ -13,10 +13,10 @@ import useGenres, { Genre } from "../hooks/useGenres";
 import genres from "../data/genres";
 
 interface Props {
-  selectedGenre: Genre | null;
+  selectedGenreId?: number;
   onSelectedGenre: (genre: Genre) => void;
 }
-const GenreList = ({ onSelectedGenre, selectedGenre }: Props) => {
+const GenreList = ({ onSelectedGenre, selectedGenreId }: Props) => {
   const { error, data, isLoading } = useGenres();
   const skeletons = new Array(genres.length).fill(0);
   return (
@@ -38,7 +38,7 @@ const GenreList = ({ onSelectedGenre, selectedGenre }: Props) => {
             as="dd"
             key={genre.id}
             padding="6px 0 6px 8px"
-            bg={selectedGenre?.id === genre.id ? "teal.300" : "transparent"}
+            bg={selectedGenreId === genre.id ? "teal.300" : "transparent"}
             borderRadius="20px"
           >
             <Image
@@ -53,7 +53,7 @@ const GenreList = ({ onSelectedGenre, selectedGenre }: Props) => {
               onClick={() => onSelectedGenre(genre)}
               variant="link"
               color="white.300"
-              fontWeight={selectedGenre?.id === genre.id ? "bold" : "normal"}
+              fontWeight={selectedGenreId === genre.id ? "bold" : "normal"}
             >
               {genre.name}
             </Button>
