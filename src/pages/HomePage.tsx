@@ -1,14 +1,13 @@
-import { Box, Grid, GridItem, HStack, Show, VStack } from "@chakra-ui/react";
 import GenreList from "../components/GenreList";
 import GameHeading from "../components/GameHeading";
 import PlatformSelector from "../components/PlatformSelector";
 import SortSelector from "../components/SortSelector";
 import GameGrid from "../components/GameGrid";
+import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 
 const HomePage = () => {
   return (
     <Grid
-      p="10px"
       templateAreas={{
         base: `"main"`,
         lg: `"aside main"`,
@@ -23,8 +22,8 @@ const HomePage = () => {
           <GenreList />
         </GridItem>
       </Show>
-      <GridItem as="main" area="main">
-        <Box paddingX="10px">
+      <GridItem as="section" area="main">
+        <Box as="header" paddingX="10px">
           <GameHeading />
           <HStack marginY="16px">
             <PlatformSelector />
