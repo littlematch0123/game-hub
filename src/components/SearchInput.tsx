@@ -1,11 +1,11 @@
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { useState } from "react";
 import { BsSearch } from "react-icons/bs";
-interface Props {
-  onSearch: (searchText: string) => void;
-}
-const SearchInput = ({ onSearch }: Props) => {
+import useGameStore from "../store";
+
+const SearchInput = () => {
   const [inputValue, setInputValue] = useState("");
+  const setSearchText = useGameStore((state) => state.setSearchText);
   return (
     <InputGroup>
       <InputLeftElement pointerEvents="none">
@@ -13,7 +13,7 @@ const SearchInput = ({ onSearch }: Props) => {
       </InputLeftElement>
       <Input
         value={inputValue}
-        onBlur={() => onSearch(inputValue)}
+        onBlur={() => setSearchText(inputValue)}
         onChange={(e) => setInputValue(e.target.value)}
         borderRadius="20px"
         placeholder="Search games..."

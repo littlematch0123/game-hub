@@ -4,18 +4,9 @@ import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import PlatformSelector from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
-import { useState } from "react";
 import GameHeading from "./components/GameHeading";
 
-export interface GameQuery {
-  genreId?: number;
-  platformId?: number;
-  sortOrder: string;
-  searchText: string;
-}
-
 function App() {
-  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
   return (
     <Grid
       p="10px"
@@ -29,39 +20,22 @@ function App() {
       }}
     >
       <GridItem as="nav" area="nav">
-        <NavBar
-          onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })}
-        />
+        <NavBar />
       </GridItem>
       <Show above="lg">
         <GridItem as="aside" area="aside" paddingX="10px">
-          <GenreList
-            selectedGenreId={gameQuery.genreId}
-            onSelectedGenre={(genre) =>
-              setGameQuery({ ...gameQuery, genreId: genre.id })
-            }
-          />
+          <GenreList />
         </GridItem>
       </Show>
       <GridItem as="main" area="main">
         <VStack align={"flex-start"} p="0 0 10px 10px" spacing={"20px"}>
-          <GameHeading gameQuery={gameQuery} />
+          <GameHeading />
           <HStack>
-            <PlatformSelector
-              selectedPlatformId={gameQuery.platformId}
-              onSelectedPlatform={(platform) =>
-                setGameQuery({ ...gameQuery, platformId: platform.id })
-              }
-            />
-            <SortSelector
-              selectedSortOrder={gameQuery.sortOrder}
-              onSelectedSortOrder={(sortOrder) =>
-                setGameQuery({ ...gameQuery, sortOrder })
-              }
-            />
+            <PlatformSelector />
+            <SortSelector />
           </HStack>
         </VStack>
-        <GameGrid gameQuery={gameQuery} />
+        <GameGrid />
       </GridItem>
     </Grid>
   );
