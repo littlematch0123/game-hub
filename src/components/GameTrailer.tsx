@@ -5,7 +5,7 @@ const GameTrailer = () => {
   const { slug } = useParams();
   const { data: details, isFetching, error } = useTrailers(slug!);
   if (isFetching) <Spinner />;
-  if (error || !details) return;
+  if (error || !details || details.length === 0) return;
   const { data, preview } = details[0];
   return (
     <Box marginY="10px">
