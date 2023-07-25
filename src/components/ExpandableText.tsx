@@ -11,7 +11,7 @@ const ExpandableText = ({
 
   return (
     <>
-      <Text {...rest} noOfLines={expanded ? 0 : 2}>
+      <Text {...rest} noOfLines={expanded ? 0 : 3}>
         {children}
       </Text>
       <Button
