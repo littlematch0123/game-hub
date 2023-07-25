@@ -4,6 +4,7 @@ export interface FetchResponse<T> {
   count: number;
   results: T[];
   next: string | null;
+  previous: string | null;
 }
 export const axiosInstance: AxiosInstance = axios.create({
   baseURL: "https://api.rawg.io/api",
