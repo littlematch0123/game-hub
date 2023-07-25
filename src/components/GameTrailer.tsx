@@ -8,7 +8,7 @@ const GameTrailer = () => {
   if (error || !details || details.length === 0) return;
   const { data, preview } = details[0];
   return (
-    <Box marginY="10px">
+    <Box as="section" marginY="10px">
       <video width="100%" controls poster={preview}>
         <source src={data[480]} type="video/mp4" />
       </video>

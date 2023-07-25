@@ -12,12 +12,7 @@ const GameAttributes = ({ game }: Props) => {
   const setPlatformId = useGameStore((s) => s.setPlatformId);
   const setGenreId = useGameStore((s) => s.setGenreId);
   return (
-    <SimpleGrid
-      as="section"
-      listStyleType="none"
-      columns={{ base: 1, lg: 2 }}
-      spacing="10px"
-    >
+    <SimpleGrid as="section" listStyleType="none" columns={2} spacing="10px">
       <DefinitionItem term="Platforms">
         <List>
           {parent_platforms?.map(({ platform: p }) => (

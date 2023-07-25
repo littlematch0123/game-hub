@@ -9,6 +9,7 @@ const GameScreenshots = () => {
   if (error || !data || data.length === 0) return;
   return (
     <SimpleGrid
+      as="section"
       columns={{
         base: 1,
         md: 2,
