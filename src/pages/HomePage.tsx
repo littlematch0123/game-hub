@@ -4,6 +4,7 @@ import PlatformSelector from "../components/PlatformSelector";
 import SortSelector from "../components/SortSelector";
 import GameGrid from "../components/GameGrid";
 import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
+import SearchTextTag from "../components/SearchTextTag";
 
 const HomePage = () => {
   return (
@@ -28,6 +29,8 @@ const HomePage = () => {
           <HStack marginY="16px">
             <PlatformSelector />
             <SortSelector />
+            store.reset();
+            <SearchTextTag />
           </HStack>
         </Box>
         <GameGrid />
