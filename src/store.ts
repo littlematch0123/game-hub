@@ -1,3 +1,4 @@
+import { mountStoreDevtool } from "simple-zustand-devtools";
 import { create } from "zustand";
 export interface GameQuery {
   genreId?: number;
@@ -11,14 +12,16 @@ interface GameQueryStore {
   setPlatformId: (platformId: number | undefined) => void;
   setSortOrder: (sortOrder: string) => void;
   setSearchText: (searchText: string) => void;
+  reset: () => void;
 }
+const initialState = {
+  genreId: undefined,
+  platformId: undefined,
+  sortOrder: "",
+  searchText: "",
+};
 const useGameStore = create<GameQueryStore>((set) => ({
-  gameQuery: {
-    genreId: undefined,
-    platformId: undefined,
-    sortOrder: "",
-    searchText: "",
-  },
+  gameQuery: initialState,
   setGenreId: (genreId) =>
     set((state) => ({ gameQuery: { ...state.gameQuery, genreId } })),
   setPlatformId: (platformId) =>
@@ -33,6 +36,9 @@ const useGameStore = create<GameQueryStore>((set) => ({
     set((state) => ({
       gameQuery: { ...state.gameQuery, searchText },
     })),
+  reset: () => set({ gameQuery: initialState }),
 }));
-
+if (process.env.NODE_ENV === "development") {
+  mountStoreDevtool("gameStore", useGameStore);
+}
 export default useGameStore;
