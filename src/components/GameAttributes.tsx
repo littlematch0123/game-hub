@@ -1,9 +1,9 @@
 import { List, ListItem, SimpleGrid } from "@chakra-ui/react";
 import DefinitionItem from "../components/DefinitionItem";
 import CriticScore from "../components/CriticScore";
-import { Game } from "../entities/Game";
 import { Link } from "react-router-dom";
 import useGameStore from "../store";
+import Game from "../entities/Game";
 interface Props {
   game: Game;
 }
