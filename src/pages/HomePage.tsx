@@ -3,12 +3,12 @@ import GameHeading from "../components/GameHeading";
 import PlatformSelector from "../components/PlatformSelector";
 import SortSelector from "../components/SortSelector";
 import GameGrid from "../components/GameGrid";
-import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
+import { Box, GridItem, HStack, Show, SimpleGrid } from "@chakra-ui/react";
 import SearchTextTag from "../components/SearchTextTag";
 
 const HomePage = () => {
   return (
-    <Grid
+    <SimpleGrid
       templateAreas={{
         base: `"main"`,
         lg: `"aside main"`,
@@ -34,7 +34,7 @@ const HomePage = () => {
         </Box>
         <GameGrid />
       </GridItem>
-    </Grid>
+    </SimpleGrid>
   );
 };
 
