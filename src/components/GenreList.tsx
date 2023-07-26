@@ -8,6 +8,7 @@ import {
   Skeleton,
   Button,
 } from "@chakra-ui/react";
+import noImage from "../assets/no-image-placeholder.webp";
 import getCroppedImageUrl from "../services/image-url";
 import useGenres from "../hooks/useGenres";
 import genres from "../data/genres";
@@ -44,6 +45,8 @@ const GenreList = () => {
               boxSize="36px"
               borderRadius="10px"
               objectFit="cover"
+              fallbackSrc={noImage}
+              alt={genre.name}
               src={getCroppedImageUrl(genre.image_background)}
             />
             <Button

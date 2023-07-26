@@ -1,3 +1,4 @@
+import noImage from "../assets/no-image-placeholder.webp";
 import { useParams } from "react-router-dom";
 import { Image, SimpleGrid, Spinner } from "@chakra-ui/react";
 import useScreenshots from "../hooks/useScreenshots";
@@ -17,8 +18,14 @@ const GameScreenshots = () => {
       marginY="10px"
       spacing="10px"
     >
-      {data?.map(({ id, image }) => (
-        <Image width="100%" key={id} src={getCroppedImageUrl(image)} />
+      {data?.map(({ id, image }, index) => (
+        <Image
+          width="100%"
+          key={id}
+          alt={`${slug || ""}-${index}`}
+          src={getCroppedImageUrl(image)}
+          fallbackSrc={noImage}
+        />
       ))}
     </SimpleGrid>
   );

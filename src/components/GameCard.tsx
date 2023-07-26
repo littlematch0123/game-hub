@@ -1,4 +1,5 @@
 import { CardBody, HStack, Heading, Image } from "@chakra-ui/react";
+import noImage from "../assets/no-image-placeholder.webp";
 import Game from "../entities/Game";
 import PlatFormIconList from "./PlatFormIconList";
 import CriticScore from "./CriticScore";
@@ -20,7 +21,7 @@ const GameCard = ({ game }: Props) => {
 
   return (
     <>
-      <Image src={getCroppedImageUrl(img)} />
+      <Image fallbackSrc={noImage} alt={name} src={getCroppedImageUrl(img)} />
       <CardBody paddingX="16px">
         <HStack justifyContent="space-between" marginBottom="8px">
           <PlatFormIconList
