@@ -26,7 +26,7 @@ const HomePage = () => {
       <GridItem as="section" area="main">
         <Box as="header" paddingX="10px">
           <GameHeading />
-          <HStack marginY="16px">
+          <HStack wrap="wrap" marginY="16px">
             <PlatformSelector />
             <SortSelector />
             <SearchTextTag />
