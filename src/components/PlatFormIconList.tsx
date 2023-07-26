@@ -7,11 +7,11 @@ import {
   FaApple,
   FaLinux,
   FaAndroid,
+  FaGlobe,
+  FaMobileAlt,
 } from "react-icons/fa";
-import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendo } from "react-icons/si";
-import { BsGlobe } from "react-icons/bs";
-import  Platform  from "../entities/Platform";
+import Platform from "../entities/Platform";
 
 interface Props {
   platforms: Platform[];
@@ -24,9 +24,9 @@ const PlatFormIconList = ({ platforms }: Props) => {
     nintendo: SiNintendo as IconType,
     mac: FaApple as IconType,
     linux: FaLinux as IconType,
-    ios: MdPhoneIphone as IconType,
+    ios: FaMobileAlt as IconType,
     android: FaAndroid as IconType,
-    web: BsGlobe as IconType,
+    web: FaGlobe as IconType,
   };
   return (
     <HStack marginY={2}>

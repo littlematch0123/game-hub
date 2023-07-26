@@ -1,5 +1,5 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
-import { BsChevronDown } from "react-icons/bs";
+import { FaChevronDown } from "react-icons/fa";
 import useGameStore from "../store";
 const SortSelector = () => {
   const sortOrders = [
@@ -18,7 +18,7 @@ const SortSelector = () => {
   return (
     <>
       <Menu>
-        <MenuButton as={Button} rightIcon={<BsChevronDown />}>
+        <MenuButton as={Button} rightIcon={<FaChevronDown />}>
           Order by: {currentSortOrder?.slug || "Relevance"}
         </MenuButton>
         <MenuList>

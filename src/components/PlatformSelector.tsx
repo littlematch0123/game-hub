@@ -7,7 +7,7 @@ import {
   MenuList,
   Spinner,
 } from "@chakra-ui/react";
-import { BsChevronDown } from "react-icons/bs";
+import { FaChevronDown } from "react-icons/fa";
 import usePlatforms from "../hooks/usePlatforms";
 import usePlatform from "../hooks/usePlatform";
 import useGameStore from "../store";
@@ -21,7 +21,7 @@ const PlatformSelector = () => {
       {error && <Alert status="error">{error.message}</Alert>}
 
       <Menu>
-        <MenuButton as={Button} rightIcon={<BsChevronDown />}>
+        <MenuButton as={Button} rightIcon={<FaChevronDown />}>
           {selectedPlatform?.name || "Platforms"}
         </MenuButton>
         <MenuList>
