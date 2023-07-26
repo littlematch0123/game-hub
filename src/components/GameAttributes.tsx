@@ -11,6 +11,7 @@ const GameAttributes = ({ game }: Props) => {
   const { parent_platforms, metacritic, genres, publishers } = game;
   const setPlatformId = useGameStore((s) => s.setPlatformId);
   const setGenreId = useGameStore((s) => s.setGenreId);
+  const setSearchText = useGameStore((s) => s.setSearchText);
   return (
     <SimpleGrid as="section" listStyleType="none" columns={2} spacing="10px">
       <DefinitionItem term="Platforms">
@@ -21,6 +22,7 @@ const GameAttributes = ({ game }: Props) => {
               onClick={() => {
                 setPlatformId(p.id);
                 setGenreId(undefined);
+                setSearchText("");
               }}
               key={p.id}
             >
@@ -40,6 +42,7 @@ const GameAttributes = ({ game }: Props) => {
               onClick={() => {
                 setGenreId(g.id);
                 setPlatformId(undefined);
+                setSearchText("");
               }}
               key={g.id}
             >
