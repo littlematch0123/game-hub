@@ -29,7 +29,12 @@ const GameCard = ({ game }: Props) => {
           <CriticScore score={metacritic} />
         </HStack>
         <HStack>
-          <Heading size="md">
+          <Heading
+            size="md"
+            _hover={{
+              textDecoration: "underline",
+            }}
+          >
             <Link to={`/games/${slug}`}>{name}</Link>
           </Heading>
           <Emoji rating={rating_top} />

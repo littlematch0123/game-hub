@@ -17,6 +17,7 @@ const GameAttributes = ({ game }: Props) => {
         <List>
           {parent_platforms?.map(({ platform: p }) => (
             <ListItem
+              textDecoration="underline"
               onClick={() => {
                 setPlatformId(p.id);
                 setGenreId(undefined);
@@ -35,6 +36,7 @@ const GameAttributes = ({ game }: Props) => {
         <List>
           {genres?.map((g) => (
             <ListItem
+              textDecoration="underline"
               onClick={() => {
                 setGenreId(g.id);
                 setPlatformId(undefined);
