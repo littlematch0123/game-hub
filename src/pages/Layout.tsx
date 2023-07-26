@@ -1,13 +1,16 @@
 import { Outlet } from "react-router-dom";
 import { NavBar } from "../components/NavBar";
-import { Box } from "@chakra-ui/react";
+import { Box, Spinner } from "@chakra-ui/react";
+import { Suspense } from "react";
 
 const Layout = () => {
   return (
     <>
       <NavBar />
       <Box as="main" p="10px">
-        <Outlet />
+        <Suspense fallback={<Spinner />}>
+          <Outlet />
+        </Suspense>
       </Box>
     </>
   );

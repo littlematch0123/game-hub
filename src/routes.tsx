@@ -1,9 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "./pages/Layout";
-import HomePage from "./pages/HomePage";
-import GameDetailPage from "./pages/GameDetailPage";
 import ErrorPage from "./pages/ErrorPage";
-
+import { lazy } from "react";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -12,11 +10,11 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <HomePage />,
+        Component: lazy(() => import("./pages/HomePage")),
       },
       {
         path: "games/:slug",
-        element: <GameDetailPage />,
+        Component: lazy(() => import("./pages/GameDetailPage")),
       },
     ],
   },
