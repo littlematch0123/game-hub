@@ -29,7 +29,6 @@ const HomePage = () => {
           <HStack marginY="16px">
             <PlatformSelector />
             <SortSelector />
-            store.reset();
             <SearchTextTag />
           </HStack>
         </Box>
