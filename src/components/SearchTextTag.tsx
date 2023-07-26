@@ -11,7 +11,7 @@ const SearchTextTag = () => {
         setSearchText("");
       }}
     >
-      <TagLabel>{searchText}</TagLabel>
+      <TagLabel wordBreak="break-all">{searchText}</TagLabel>
       <TagCloseButton />
     </Tag>
   );
